@@ -1,27 +1,28 @@
 //Has to be deleted. Just to give an example for how to design a mongoose schema
-
+//UserID, Username(String), FirstName(String), LastName(String), email(String), password(String hashed), UserType(String), City(String), State(String), Country(String), timestamp(Date)
 var mongoose = require("mongoose");
 
 var Users = mongoose.model("User", {
+  username: {type: String},
+  password: {
+    type: String
+  },
+  email: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  userType: {
+    type: String,
+    default: "farmer/iot_support/infrastructure_manager"
+  },
   firstName: {
     type: String,
     default: "firstname"
   },
   lastName: {
     type: String,
-    default: "lasttname"
-  },
-  type: {
-    type: String,
-    default: "traveller/owner"
-  },
-  phone: {
-    type: String,
-    default: "xxx-xxx-xxxx"
-  },
-  address: {
-    type: String,
-    default: "address"
+    default: "lastname"
   },
   city: {
     type: String,
@@ -31,76 +32,14 @@ var Users = mongoose.model("User", {
     type: String,
     default: "state"
   },
-  zipcode: {
+  county: {
     type: String,
-    default: "zipcode"
-  },
-  country: {
-    type: String,
-    default: "country"
-  },
-  experience: {
-    type: String,
-    default: "experience"
-  },
-  education: {
-    type: String,
-    default: "education"
-  },
-  skills: {
-    type: String,
-    default: "skills"
-  },
-  profileSummary: {
-    type: String,
-    default: "profileSummary"
-  },
-  clickCounts: {
-    type: Number,
-    default: 0
-  },
-  resume: {
-    type: String,
-    default: "resume"
-  },
-  gender: {
-    type: String,
-    default: "gender"
+    default: "county"
   },
   img: {
     type: String,
     default: "image"
   },
-  connectionRequests: [String],
-  connections: [String],
-  savedJobs: [String],
-  appliedJobs: {
-    type: String,
-    default: "appliedJobs"
-  },
-  email: {
-    type: String,
-    unique: true,
-    required: true
-  },
-
-  password: {
-    type: String
-  },
-  companyName: {
-    type: String,
-    default: "Company Name"
-  }
-
-  // Credentials :[{
-  //     email :{
-  //         type : String
-  //     },
-  //     password : {
-  //         type : String
-  //     },
-
-  // }]
 });
 
 module.exports = { Users };

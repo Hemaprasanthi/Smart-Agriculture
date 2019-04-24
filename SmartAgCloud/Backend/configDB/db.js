@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
 mongoose.connect(
+  //SAC -> username; cmpe281 -> passwordn
   "mongodb+srv://SAC:Cmpe281@clustersac-mtjqh.mongodb.net/test?retryWrites=true",
   { useNewUrlParser: true }
 );
